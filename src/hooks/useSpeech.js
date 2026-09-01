@@ -4,18 +4,21 @@ export function useSpeech() {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
 
-  // কম্পোনেন্ট আনমাউন্ট হলে অডিও বন্ধ রাখার ক্লিইনাপ
+  // Cleanup audio when component unmounts
   useEffect(() => {
     return () => {
-      window.speechSynthesis.cancel();
+      if (typeof window !== 'undefined' && window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
     };
   }, []);
 
   // Play / Resume Combined Function
   const handlePlayOrResume = (textToSpeak) => {
     if (!textToSpeak || !textToSpeak.trim()) return;
+    if (typeof window === 'undefined' || !window.speechSynthesis) return;
 
-    // ১. পজ থাকা অবস্থায় Resume করা
+    // 1. Resume if currently paused
     if (isPaused) {
       window.speechSynthesis.resume();
       setIsPaused(false);
@@ -23,7 +26,7 @@ export function useSpeech() {
       return;
     }
 
-    // ২. একদম শুরু থেকে Play করা
+    // 2. Play from the start
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(textToSpeak);
 
@@ -44,6 +47,7 @@ export function useSpeech() {
 
   // Pause Function
   const pause = () => {
+    if (typeof window === 'undefined' || !window.speechSynthesis) return;
     if (isSpeaking && !isPaused) {
       window.speechSynthesis.pause();
       setIsPaused(true);
@@ -51,9 +55,11 @@ export function useSpeech() {
     }
   };
 
-  // Stop Function (সবকিছু রিসেট হয়ে যাবে এবং বাটন 'Play' হবে)
+  // Stop Function (resets all state and stops speech)
   const stop = () => {
-    window.speechSynthesis.cancel();
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+    }
     setIsSpeaking(false);
     setIsPaused(false);
   };

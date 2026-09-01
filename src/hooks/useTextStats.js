@@ -1,10 +1,13 @@
 import { useState } from "react";
 
-function useTextStats() {
+function useTextStats(onChangeCallback) {
   const [text, setText] = useState("");
 
   const handleTextChange = (e) => {
     setText(e.target.value);
+    if (typeof onChangeCallback === 'function') {
+      onChangeCallback(e);
+    }
   };
 
   const charCount = text.length;

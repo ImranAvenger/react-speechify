@@ -1,5 +1,3 @@
-import React from "react";
-
 function Header() {
   return (
     <header className="flex items-center justify-between px-3 sm:px-6 py-3 sm:py-4">
@@ -32,7 +30,11 @@ function Header() {
       </div>
 
       {/* Settings button */}
-      <button className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors duration-200 px-2 sm:px-3 py-2 rounded-lg hover:bg-white/5">
+      <button
+        type="button"
+        aria-label="Settings"
+        className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors duration-200 px-2 sm:px-3 py-2 rounded-lg hover:bg-white/5"
+      >
         <svg
           width="16"
           height="16"

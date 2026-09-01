@@ -1,5 +1,3 @@
-import React from 'react'
-
 /* Animated waveform displayed while speaking */
 function Waveform({ state }) {
   // state: 'idle' | 'speaking' | 'paused'
@@ -52,6 +50,7 @@ function Controls({ text, isSpeaking, isPaused, onPlayOrResume, onPause, onStop 
 
         {/* Play / Resume — always full-width on mobile */}
         <button
+          type="button"
           onClick={onPlayOrResume}
           disabled={!hasText || (isSpeaking && !isPaused)}
           className="flex-1 flex items-center justify-center gap-2 py-3.5 sm:py-3 px-5 rounded-2xl font-semibold text-sm transition-all duration-200
@@ -85,6 +84,7 @@ function Controls({ text, isSpeaking, isPaused, onPlayOrResume, onPause, onStop 
 
           {/* Pause */}
           <button
+            type="button"
             onClick={onPause}
             disabled={!isSpeaking || isPaused}
             className="flex-1 sm:flex-none flex items-center justify-center gap-2 py-3.5 sm:py-3 px-5 rounded-2xl font-semibold text-sm transition-all duration-200
@@ -101,6 +101,7 @@ function Controls({ text, isSpeaking, isPaused, onPlayOrResume, onPause, onStop 
 
           {/* Stop */}
           <button
+            type="button"
             onClick={onStop}
             disabled={!isSpeaking && !isPaused}
             className="flex-1 sm:flex-none flex items-center justify-center gap-2 py-3.5 sm:py-3 px-5 rounded-2xl font-semibold text-sm transition-all duration-200

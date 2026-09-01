@@ -1,16 +1,44 @@
-# React + Vite
+# React Speechify 🎙️
+A sleek, responsive Text-to-Speech web application built with **React 19**, **Tailwind CSS v4**, and the **Web Speech API**.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## ✨ Features
+- **Instant Speech Synthesis**: Convert any written text into natural speech.
+- **Playback Controls**: Play, Pause, Resume, and Stop controls with live status indicators.
+- **Audio Waveform Visualization**: Animated waveform that pulses during playback and pauses seamlessly.
+- **Real-Time Text Stats**: Dynamic character count, word count, and estimated reading time.
+- **Responsive & Mobile-First**: Optimized layout with touch-target sizing and iOS auto-zoom prevention.
+- **Dark Glassmorphism UI**: Modern frosted-glass aesthetic with smooth animations.
 
-Currently, two official plugins are available:
+## 🚀 Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Prerequisites
+- Node.js (v18+)
+- npm
 
-## React Compiler
+### Installation
+```bash
+npm install
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Development
+```bash
+npm run dev
+```
 
-## Expanding the ESLint configuration
+### Run Tests
+```bash
+# Run unit tests once
+npm test
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Run tests in watch mode
+npm run test:watch
+```
+
+### Build for Production
+```bash
+npm run build
+```
+
+## 🧪 Testing
+Unit tests are written with [Vitest](https://vitest.dev/) and [@testing-library/react](https://testing-library.com/).
+Tests cover custom hooks (`useSpeech`, `useTextStats`), individual UI components (`Controls`, `TextArea`, `TextStats`, `Header`), and full app integration.
