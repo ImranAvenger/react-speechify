@@ -1,1 +1,110 @@
 @import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0f0f1a;
+  min-height: 100vh;
+  min-height: 100dvh; /* use dynamic viewport height on mobile */
+  margin: 0;
+  /* Safe area insets for notched phones */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Remove 300ms tap delay on all interactive elements */
+button, a, textarea, input, select {
+  touch-action: manipulation;
+}
+
+/* Animated gradient background */
+.bg-app {
+  background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Glass card effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+}
+
+/* Waveform bars */
+.wave-bar {
+  display: inline-block;
+  width: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to top, #6366f1, #a78bfa);
+  animation: wave 1.2s ease-in-out infinite;
+}
+
+.wave-bar:nth-child(1) { animation-delay: 0s;    height: 10px; }
+.wave-bar:nth-child(2) { animation-delay: 0.1s;  height: 16px; }
+.wave-bar:nth-child(3) { animation-delay: 0.2s;  height: 22px; }
+.wave-bar:nth-child(4) { animation-delay: 0.3s;  height: 16px; }
+.wave-bar:nth-child(5) { animation-delay: 0.4s;  height: 10px; }
+
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.5); opacity: 0.6; }
+  50%       { transform: scaleY(1.4); opacity: 1;   }
+}
+
+.wave-bar.paused {
+  animation-play-state: paused;
+}
+
+.wave-bar.stopped {
+  animation: none;
+  height: 4px;
+  opacity: 0.3;
+}
+
+/* Custom scrollbar for textarea */
+textarea::-webkit-scrollbar {
+  width: 6px;
+}
+textarea::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
+  border-radius: 3px;
+}
+textarea::-webkit-scrollbar-thumb {
+  background: rgba(99,102,241,0.5);
+  border-radius: 3px;
+}
+textarea::-webkit-scrollbar-thumb:hover {
+  background: rgba(99,102,241,0.8);
+}
+
+/* Glow pulse for active state */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(99,102,241,0.4); }
+  50%       { box-shadow: 0 0 25px rgba(99,102,241,0.8), 0 0 50px rgba(99,102,241,0.3); }
+}
+
+.glow-active {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeInUp 0.6s ease-out both;
+}
+.fade-in-delay-1 { animation-delay: 0.1s; }
+.fade-in-delay-2 { animation-delay: 0.2s; }
+.fade-in-delay-3 { animation-delay: 0.3s; }

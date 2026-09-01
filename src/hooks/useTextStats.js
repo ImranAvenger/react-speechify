@@ -1,23 +1,21 @@
-import { useState } from 'react'
+import { useState } from "react";
 
 function useTextStats() {
-  const [text, setText] = useState('')
+  const [text, setText] = useState("");
 
   const handleTextChange = (e) => {
-    setText(e.target.value)
-  }
+    setText(e.target.value);
+  };
 
-  const charCount = text.length
-  const wordCount = text.trim() === '' ? 0 : text.trim().split(/\s+/).length
-  console.log('Character Count:', charCount)
-  console.log('Word Count:', wordCount)
+  const charCount = text.length;
+  const wordCount = text.trim() === "" ? 0 : text.trim().split(/\s+/).length;
 
   return {
     text,
     handleTextChange,
     charCount,
-    wordCount
-  }
+    wordCount,
+  };
 }
 
-export default useTextStats
+export default useTextStats;
